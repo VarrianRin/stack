@@ -10,10 +10,7 @@ typedef double Elem_t;
 int CAPACITY = 4;
 const Elem_t POISON = - 1073676287;
 const int CAN_V = 0xBEDA;
-enum errcode_t {OK = 0, CAN_ERROR = 1, SIZE_ERROR = 2, DATA_ERROR = 3, HASH_ERROR = 4, ERRCODE_ERROR = 5};//помещать в битах все ошибки
-
-//большие буквы для define
-//не короткие названия
+enum errcode_t {OK = 0, CAN_ERROR = 1, SIZE_ERROR = 2, DATA_ERROR = 3, HASH_ERROR = 4, ERRCODE_ERROR = 5};
 
 #define CheckStack(stk); if(StackOk(stk))StackDump(stk);
 #define can1 *(int*)stk->data
@@ -29,7 +26,7 @@ struct stack_t {
 };
 
 long int GavHash(stack_t* stk) {
-    //норм хэш
+    
     assert(stk != NULL);
 
     const int code = 0xBEDAB0DA;
@@ -46,7 +43,7 @@ long int GavHash(stack_t* stk) {
 
 int StackOk(stack_t* stk) {
 
-    assert(stk != NULL); //граната
+    assert(stk != NULL);
 
     if (stk->can0 != CAN_V || can1 != CAN_V || can2 != CAN_V) {
         stk->errcode = CAN_ERROR;
@@ -100,7 +97,7 @@ bool ErrorPrint(errcode_t errcode) {
             break;
 
         default:
-            printf ("(ERRCODE_ERROR)");//писать какой код ошибочный
+            printf ("(ERRCODE_ERROR)");
             break;
     }
 
